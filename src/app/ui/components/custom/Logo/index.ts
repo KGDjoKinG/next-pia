@@ -1,0 +1,1 @@
+export { default as LogoX } from "./Logo.component"
