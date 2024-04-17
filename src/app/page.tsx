@@ -18,7 +18,10 @@ const CustomScreen: FunctionComponent<ICustomScreenProps> = () => {
         return (
             <div className="flex flex-col gap-4">
                 <div>
-                    <label htmlFor="company" className="block text-sm font-medium leading-6 text-gray-900">
+                    <label
+                        htmlFor="company"
+                        className="block text-sm font-medium leading-6 text-gray-900"
+                    >
                         Байгууллагын нэр
                     </label>
                     <div className="mt-2">
@@ -34,13 +37,22 @@ const CustomScreen: FunctionComponent<ICustomScreenProps> = () => {
                     </div>
                 </div>
 
-                <Button className="rounded-full" type="primary" block disabled={input.length === 0} onClick={() => setStep("Login")}>
+                <Button
+                    className="rounded-full"
+                    type="primary"
+                    block
+                    disabled={input.length === 0}
+                    onClick={() => setStep("Login")}
+                >
                     Нэвтрэх
                 </Button>
 
                 <p className="mt-10 text-center text-sm text-gray-500">
                     Байгууллага тань олдохгүй байна уу?{" "}
-                    <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                    <a
+                        href="#"
+                        className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+                    >
                         Бид тусалъя
                     </a>
                 </p>
@@ -75,7 +87,12 @@ const CustomScreen: FunctionComponent<ICustomScreenProps> = () => {
                     </div>
                 </div>
                 <div className="flex justify-center">
-                    <Button type="primary" className="w-40 rounded-full" disabled={input.length === 0} onClick={() => setStep("Login")}>
+                    <Button
+                        type="primary"
+                        className="w-40 rounded-full"
+                        disabled={input.length === 0}
+                        onClick={() => setStep("Login")}
+                    >
                         Нэвтрэх
                     </Button>
                 </div>
@@ -100,14 +117,24 @@ export default function Home() {
         <>
             <Head>
                 <title>Login</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
-                <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
+                <meta
+                    httpEquiv="Content-Type"
+                    content="text/html;charset=UTF-8"
+                />
+                <link
+                    rel="shortcut icon"
+                    href="/logo.png"
+                    type="image/x-icon"
+                />
             </Head>
             <main className="absolute flex items-center justify-center w-full h-full">
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                        <Logo wText />
+                        <Logo wText size="md" />
                     </div>
 
                     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

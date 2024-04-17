@@ -9,6 +9,9 @@ import {
     UsergroupAddOutlined,
     QuestionCircleOutlined,
     DashboardOutlined,
+    SmileOutlined,
+    FrownOutlined,
+    SolutionOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme, Space, MenuProps } from "antd";
 import Head from "next/head";
@@ -27,7 +30,12 @@ interface ILayout extends PropsWithChildren {
 }
 type MenuItem = Required<MenuProps>["items"][number];
 
-function getItem(label: React.ReactNode, key: React.Key, icon?: React.ReactNode, children?: MenuItem[]): MenuItem {
+function getItem(
+    label: React.ReactNode,
+    key: React.Key,
+    icon?: React.ReactNode,
+    children?: MenuItem[]
+): MenuItem {
     return {
         key,
         icon,
@@ -38,50 +46,70 @@ function getItem(label: React.ReactNode, key: React.Key, icon?: React.ReactNode,
 
 const items: MenuItem[] = [
     getItem(
-        <Link className="text-xl" href="/dashboard/users">
+        <Link className="text-[18px]" href="/dashboard">
             Хянах
         </Link>,
-        "users",
-        <DashboardOutlined style={{ fontSize: "22px" }} />
+        "dashboard",
+        <DashboardOutlined style={{ fontSize: "20px" }} />
     ),
     getItem(
-        <Link className="text-xl" href="/dashboard/devices">
-            Тайлан
-        </Link>,
-        "devices",
-        <LineChartOutlined style={{ fontSize: "22px" }} />
+        <div className="text-[18px]">Тайлан</div>,
+        "subreports",
+        <LineChartOutlined style={{ fontSize: "20px" }} />,
+        [
+            getItem(
+                <Link href="/dashboard/wellbeing">Well-being</Link>,
+                "wellbeing",
+                <SmileOutlined style={{ fontSize: "20px" }} />
+            ),
+            getItem(
+                <Link href="/dashboard/stress">Stress</Link>,
+                "stress",
+                <FrownOutlined style={{ fontSize: "20px" }} />
+            ),
+            getItem(
+                <Link href="/dashboard/enps">eSPN</Link>,
+                "enps",
+                <SolutionOutlined style={{ fontSize: "20px" }} />
+            ),
+        ]
     ),
     getItem(
-        <Link className="text-xl" href="/dashboard/groups">
+        <Link className="text-[18px]" href="/dashboard/reports/wellbeing">
             Үзүүлэлт
         </Link>,
         "groups",
-        <PieChartOutlined style={{ fontSize: "22px" }} />
+        <PieChartOutlined style={{ fontSize: "20px" }} />
     ),
     getItem(
-        <Link className="text-xl" href="/dashboard/monitoring">
+        <Link className="text-[18px]" href="/dashboard/monitoring">
             Хэлтэс
         </Link>,
         "monitor",
-        <UsergroupAddOutlined style={{ fontSize: "22px" }} />
+        <UsergroupAddOutlined style={{ fontSize: "20px" }} />
     ),
     getItem(
-        <Link className="text-xl" href="/dashboard/monitoring">
+        <Link className="text-[18px]" href="/dashboard/reports/enps">
             Санал
         </Link>,
         "monitor",
-        <CommentOutlined style={{ fontSize: "22px" }} />
+        <CommentOutlined style={{ fontSize: "20px" }} />
     ),
     getItem(
-        <Link className="text-xl" href="/dashboard/monitoring">
+        <Link className="text-[18px]" href="/dashboard/monitoring">
             Тусламж
         </Link>,
         "monitor",
-        <QuestionCircleOutlined style={{ fontSize: "22px" }} />
+        <QuestionCircleOutlined style={{ fontSize: "20px" }} />
     ),
 ];
 
-const CLayout: React.FC<ILayout> = ({ title, selectedKey = "users", selectedOpenKey = "", children }) => {
+const CLayout: React.FC<ILayout> = ({
+    title,
+    selectedKey = "users",
+    selectedOpenKey = "",
+    children,
+}) => {
     const router = useRouter();
     const [collapsed, setCollapsed] = useState(false);
     const {
@@ -92,33 +120,56 @@ const CLayout: React.FC<ILayout> = ({ title, selectedKey = "users", selectedOpen
         <>
             <Head>
                 <title>{title}</title>
-                <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta
+                    http-equiv="Content-Type"
+                    content="text/html;charset=UTF-8"
+                />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
                 <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-                <link rel="shortcut icon" href="/shortcut-logo.png" type="image/x-icon" />
+                <link
+                    rel="shortcut icon"
+                    href="/shortcut-logo.png"
+                    type="image/x-icon"
+                />
             </Head>
             <Layout>
-                <Sider theme="light" collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-                    <div className="my-2">
-                        <Logo size="sm" wText />
-                    </div>
+                <Sider
+                    className="border-r"
+                    theme="light"
+                    collapsible
+                    width={"250"}
+                    collapsed={collapsed}
+                    onCollapse={(value) => setCollapsed(value)}
+                >
+                    <Logo cn="py-4 mx-auto" size="sm" wText />
                     <Menu
                         theme="light"
                         defaultSelectedKeys={[selectedKey]}
                         defaultOpenKeys={[selectedOpenKey]}
                         mode="inline"
                         inlineIndent={40}
-                        icon
                         items={items}
                     />
                 </Sider>
 
                 <Layout>
-                    <Header style={{ padding: 0, background: colorBgContainer }} className="flex items-center justify-between">
+                    <Header
+                        className="flex items-center justify-between border-b h-32"
+                        style={{ padding: 0, background: colorBgContainer }}
+                    >
                         <Space align="center">
                             <Button
                                 type="text"
-                                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                                icon={
+                                    collapsed ? (
+                                        <MenuUnfoldOutlined />
+                                    ) : (
+                                        <MenuFoldOutlined />
+                                    )
+                                }
                                 onClick={() => setCollapsed(!collapsed)}
                                 style={{
                                     display: "block",
@@ -146,16 +197,18 @@ const CLayout: React.FC<ILayout> = ({ title, selectedKey = "users", selectedOpen
                                     alt=""
                                 />
                                 <div>
-                                    <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">{"Давзанравжаа Дундуг"}</h3>
-                                    <p className="text-sm font-semibold leading-6 text-indigo-600">{"Гүйцэтгэх захирал"}</p>
+                                    <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">
+                                        {"Давзанравжаа Дундуг"}
+                                    </h3>
+                                    <p className="text-sm font-semibold leading-6 text-indigo-600">
+                                        {"Гүйцэтгэх захирал"}
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </Header>
                     <Content
                         style={{
-                            margin: "24px 16px",
-                            padding: 24,
                             height: "calc(100vh - 64px - 48px)",
                             overflow: "auto",
                             background: colorBgContainer,

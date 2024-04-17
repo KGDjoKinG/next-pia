@@ -5,23 +5,59 @@ import { FunctionComponent } from "react";
 interface IScreenLoader {
     wText?: boolean;
     size?: "sm" | "md" | "lg" | "xl";
+    cn?: string;
 }
 
-const ILogo: FunctionComponent<IScreenLoader> = ({ wText, size }) => {
+const ILogo: FunctionComponent<IScreenLoader> = ({ wText, size, cn }) => {
     return (
-        <div className="flex flex-col gap-8 items-center w-max mx-auto">
+        <div
+            className={
+                `flex flex-col gap-8 items-center w-max mx-auto ` +
+                (cn ? cn : "")
+            }
+        >
             <svg
-                width={size === "sm" ? "58" : size === "md" ? "87" : size === "lg" ? "117" : "147"}
-                height={size === "sm" ? "70" : size === "md" ? "105" : size === "lg" ? "141" : "176"}
+                width={
+                    size === "sm"
+                        ? "58"
+                        : size === "md"
+                        ? "87"
+                        : size === "lg"
+                        ? "117"
+                        : "147"
+                }
+                height={
+                    size === "sm"
+                        ? "70"
+                        : size === "md"
+                        ? "105"
+                        : size === "lg"
+                        ? "141"
+                        : "176"
+                }
                 viewBox="0 0 117 141"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
             >
-                <rect x="0.761719" y="0.839844" width="115.477" height="140" fill="url(#pattern0_192_1486)" />
+                <rect
+                    x="0.761719"
+                    y="0.839844"
+                    width="115.477"
+                    height="140"
+                    fill="url(#pattern0_192_1486)"
+                />
                 <defs>
-                    <pattern id="pattern0_192_1486" patternContentUnits="objectBoundingBox" width="1" height="1">
-                        <use xlinkHref="#image0_192_1486" transform="matrix(0.00141797 0 0 0.00116959 -0.000543937 0)" />
+                    <pattern
+                        id="pattern0_192_1486"
+                        patternContentUnits="objectBoundingBox"
+                        width="1"
+                        height="1"
+                    >
+                        <use
+                            xlinkHref="#image0_192_1486"
+                            transform="matrix(0.00141797 0 0 0.00116959 -0.000543937 0)"
+                        />
                     </pattern>
                     <image
                         id="image0_192_1486"
@@ -33,17 +69,47 @@ const ILogo: FunctionComponent<IScreenLoader> = ({ wText, size }) => {
             </svg>
             {wText && (
                 <svg
-                    width={size === "sm" ? "150" : size === "md" ? "225" : size === "lg" ? "301" : "376"}
-                    height={size === "sm" ? "52" : size === "md" ? "78" : size === "lg" ? "104" : "130"}
+                    width={
+                        size === "sm"
+                            ? "150"
+                            : size === "md"
+                            ? "225"
+                            : size === "lg"
+                            ? "301"
+                            : "376"
+                    }
+                    height={
+                        size === "sm"
+                            ? "52"
+                            : size === "md"
+                            ? "78"
+                            : size === "lg"
+                            ? "104"
+                            : "130"
+                    }
                     viewBox="0 0 301 104"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     xmlnsXlink="http://www.w3.org/1999/xlink"
                 >
-                    <rect x="0.5" y="0.839844" width="300" height="102.32" fill="url(#pattern0_141_3185)" />
+                    <rect
+                        x="0.5"
+                        y="0.839844"
+                        width="300"
+                        height="102.32"
+                        fill="url(#pattern0_141_3185)"
+                    />
                     <defs>
-                        <pattern id="pattern0_141_3185" patternContentUnits="objectBoundingBox" width="1" height="1">
-                            <use xlinkHref="#image0_141_3185" transform="scale(0.00232019 0.00680272)" />
+                        <pattern
+                            id="pattern0_141_3185"
+                            patternContentUnits="objectBoundingBox"
+                            width="1"
+                            height="1"
+                        >
+                            <use
+                                xlinkHref="#image0_141_3185"
+                                transform="scale(0.00232019 0.00680272)"
+                            />
                         </pattern>
                         <image
                             id="image0_141_3185"
