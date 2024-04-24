@@ -1,5 +1,4 @@
 "use client";
-
 import { FunctionComponent } from "react";
 
 interface IScreenLoader {
