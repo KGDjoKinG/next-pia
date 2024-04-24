@@ -58,17 +58,17 @@ const items: MenuItem[] = [
         <LineChartOutlined style={{ fontSize: "20px" }} />,
         [
             getItem(
-                <Link href="/dashboard/wellbeing">Well-being</Link>,
-                "wellbeing",
+                <Link href="/dashboard/reports/well-being">Well-being</Link>,
+                "well-being",
                 <SmileOutlined style={{ fontSize: "20px" }} />
             ),
             getItem(
-                <Link href="/dashboard/stress">Stress</Link>,
+                <Link href="/dashboard/reports/stress">Stress</Link>,
                 "stress",
                 <FrownOutlined style={{ fontSize: "20px" }} />
             ),
             getItem(
-                <Link href="/dashboard/enps">eSPN</Link>,
+                <Link href="/dashboard/reports/enps">eSPN</Link>,
                 "enps",
                 <SolutionOutlined style={{ fontSize: "20px" }} />
             ),
